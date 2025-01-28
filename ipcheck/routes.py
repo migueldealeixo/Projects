@@ -3,7 +3,11 @@ from .subfunc import scan_network,get_ip_details
 
 main = Blueprint('main',__name__)
 
-@main.route('main', __name__)
+@main.route("/")
+def home():
+    return "Bem vindo"
+
+@main.route('/main')
 def scan():
     newtwork = request.args.get('network', default='192.168.1.0/24', type=str)
     active_ips = scan_network(newtwork)

@@ -306,6 +306,17 @@ files = [
 ]
 
 [[package]]
+name = "python-nmap"
+version = "0.7.1"
+description = "This is a python class to use nmap and access scan results from python3"
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = [
+    {file = "python-nmap-0.7.1.tar.gz", hash = "sha256:f75af6b91dd8e3b0c31f869db32163f62ada686945e5b7c25f84bc0f7fad3b64"},
+]
+
+[[package]]
 name = "requests"
 version = "2.32.3"
 description = "Python HTTP for Humans."
@@ -366,4 +377,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12"
-content-hash = "376beaae5b129874f58baff2a4d2092277a487342a51969d37aab018bd440df1"
+content-hash = "f71fa31c861f9d8458007b7db87465d873b205bbdefd4429a68caff61f0d27ea"
