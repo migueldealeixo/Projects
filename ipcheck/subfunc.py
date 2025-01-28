@@ -2,7 +2,7 @@ import subprocess
 import requests
 import ipaddress
 
-def scan_networ(network):
+def scan_network(network):
     active_ips = []
     for ip in ipaddress.IPv4Network(network, strict=False):
         result = subprocess.run(['ping', '-c', '1','-W', '1', str(ip)], stdout=subprocess.DEVNULL)
