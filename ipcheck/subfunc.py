@@ -1,15 +1,21 @@
-import subprocess
-import requests
-import ipaddress
+import nmap
+import socket
 
-def scan_network(network):
+def get_ip_range():
+    local_ip = socket.gethostbyname(socket.gethostname())
+    subnet = '.'.join(local_ip.split(".")[:-1]) +'.0/24'
+    return subnet
+
+def scan ():
+    nm = nmap.PortScanner()
+    ip_range = get_ip_range
+    print(f"Procurando a rede:{ip_range}")
+    nm.scan(hosts=ip_range,arguments="-sn")
+
     active_ips = []
-    for ip in ipaddress.IPv4Network(network, strict=False):
-        result = subprocess.run(['ping', '-c', '1','-W', '1', str(ip)], stdout=subprocess.DEVNULL)
-        if result.returncode == 0:
-            active_ips.append(str(ip))
+    for host in nm.all_hosts():
+        if nm[host].state == "up":
+            active_ips.append(host)
     return active_ips
 
-def get_ip_details(ip):
-    response = requests.get(f'https://ipinfo.io/{ip}/json')
-    return response.json if response.status_code == 200 else {"error":"Falha na procuração de dados"}
+
